@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcat8tv3vpsug"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_epvqu"]
+[ext_resource type="Texture2D" uid="uid://bc55layc5vuid" path="res://icon.svg" id="1_uh4ip"]
+[ext_resource type="Script" path="res://scenes/controller.gd" id="3_75q24"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h35eq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bjlr"]
+albedo_texture = ExtResource("1_uh4ip")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_epvqu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_h35eq")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CollisionShape3D"]
+material = SubResource("StandardMaterial3D_5bjlr")
+
+[node name="Controller" type="Node" parent="."]
+script = ExtResource("3_75q24")
