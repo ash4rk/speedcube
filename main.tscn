@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://60gkfo7hc2nd"]
+
+[ext_resource type="Material" uid="uid://bly25nr0aqsv3" path="res://assets/materials/BlueGrid.material" id="1_qelof"]
+[ext_resource type="Material" uid="uid://d3up41bo0vjj0" path="res://assets/materials/OrangeGrid.material" id="1_uw2a4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uy075"]
+size = Vector2(1000, 1000)
+
+[node name="World" type="Node"]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGMesh3D" parent="Level"]
+material_override = ExtResource("1_uw2a4")
+mesh = SubResource("PlaneMesh_uy075")
+
+[node name="Box" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4822, -73.1346)
+size = Vector3(50, 25, 50)
+material = ExtResource("1_qelof")
+
+[node name="Box2" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.9584, 12.8823, -150.358)
+size = Vector3(50, 25, 50)
+material = ExtResource("1_qelof")
