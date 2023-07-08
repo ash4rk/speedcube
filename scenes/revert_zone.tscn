@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqiwo186ak0bs"]
+
+[ext_resource type="Script" path="res://scenes/revert_zone.gd" id="1_vfkyu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0tpic"]
+size = Vector3(5.45387, 1.64869, 2.11271)
+
+[node name="RevertZone" type="Area3D"]
+script = ExtResource("1_vfkyu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0tpic")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

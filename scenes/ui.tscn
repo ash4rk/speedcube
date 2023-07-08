@@ -12,7 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_u5lwf")
 
 [node name="DebugWindow" type="Control" parent="."]
-custom_minimum_size = Vector2(300, 200)
+custom_minimum_size = Vector2(300, 240)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -100,6 +100,13 @@ layout_mode = 2
 [node name="PlayerSpeedLabel" type="Label" parent="DebugWindow/VBoxContainer/PlayerSpeedContainer"]
 layout_mode = 2
 text = "PlayerSpeed: {player_speed_value}"
+
+[node name="InputContainer" type="HBoxContainer" parent="DebugWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="InputLabel" type="Label" parent="DebugWindow/VBoxContainer/InputContainer"]
+layout_mode = 2
+text = "Input: {input_value}"
 
 [connection signal="value_changed" from="DebugWindow/VBoxContainer/FPSLockContainer/FPSMaxHSlider" to="." method="_on_fps_max_h_slider_value_changed"]
 [connection signal="toggled" from="DebugWindow/VBoxContainer/VSYNCContainer/VSYNCCheckButton" to="." method="_on_vsync_check_button_toggled"]

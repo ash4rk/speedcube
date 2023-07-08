@@ -1,6 +1,7 @@
 extends Control
 
-@export var player: Player
+@export var cube: CharacterBody3D
+@export var controller: Node
 @onready var fps : int = int(Performance.get_monitor(Performance.TIME_FPS))
 
 @onready var fpsLabel : Label = $DebugWindow/VBoxContainer/HBoxContainer/FPSLabel
@@ -8,6 +9,7 @@ extends Control
 @onready var vSyncCheck : CheckButton = $DebugWindow/VBoxContainer/VSYNCContainer/VSYNCCheckButton
 @onready var playerVelocityLabel : Label = $DebugWindow/VBoxContainer/PlayerVelocityContainer/PlayerVelocityLabel
 @onready var playerSpeedLabel : Label = $DebugWindow/VBoxContainer/PlayerSpeedContainer/PlayerSpeedLabel
+@onready var inputLabel : Label = $DebugWindow/VBoxContainer/InputContainer/InputLabel
 
 func _ready():
 	vSyncCheck.button_pressed = DisplayServer.window_get_vsync_mode()
@@ -18,6 +20,7 @@ func _process(_delta):
 	_update_max_fps()
 	_update_player_velocity()
 	_update_player_speed()
+	_update_input()
 
 func _update_fps():
 	fps = int(Performance.get_monitor(Performance.TIME_FPS))
@@ -36,7 +39,10 @@ func _on_vsync_check_button_toggled(button_pressed):
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 func _update_player_velocity():
-	playerVelocityLabel.text = "PlayerVelocity: " + str(player.velocity.round())
+	playerVelocityLabel.text = "Velocity: " + str(cube.velocity.round())
 
 func _update_player_speed():
-	playerSpeedLabel.text = "InputSpeed: " + str(player.controller.input_speed)
+	playerSpeedLabel.text = "Speed: " + str(cube.speed)
+
+func _update_input():
+	inputLabel.text = "Input: " + str(controller.input_speed)

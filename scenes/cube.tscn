@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://djc4ps6ly7clq"]
+
+[ext_resource type="Script" path="res://scenes/cube.gd" id="1_imfsm"]
+[ext_resource type="Texture2D" uid="uid://bc55layc5vuid" path="res://icon.svg" id="1_uh4ip"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ukmr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ar8w"]
+albedo_texture = ExtResource("1_uh4ip")
+
+[node name="Cube" type="CharacterBody3D" groups=["cubes"]]
+script = ExtResource("1_imfsm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4ukmr")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CollisionShape3D"]
+material = SubResource("StandardMaterial3D_0ar8w")
