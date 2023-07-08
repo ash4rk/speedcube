@@ -13,7 +13,7 @@ func _ready():
 	vSyncCheck.button_pressed = DisplayServer.window_get_vsync_mode()
 	maxFpsLabel.text = str(Engine.max_fps)
 
-func _process(delta):
+func _process(_delta):
 	_update_fps()
 	_update_max_fps()
 	_update_player_velocity()
