@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://60gkfo7hc2nd"]
+[gd_scene load_steps=9 format=3 uid="uid://60gkfo7hc2nd"]
 
 [ext_resource type="Material" uid="uid://bly25nr0aqsv3" path="res://assets/materials/BlueGrid.material" id="1_qelof"]
 [ext_resource type="Material" uid="uid://d3up41bo0vjj0" path="res://assets/materials/OrangeGrid.material" id="1_uw2a4"]
 [ext_resource type="PackedScene" uid="uid://dcat8tv3vpsug" path="res://scenes/player.tscn" id="3_x2tth"]
+[ext_resource type="PackedScene" uid="uid://dyioswmlpo12f" path="res://scenes/ui.tscn" id="4_wp1eo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5wm0p"]
 sky_top_color = Color(0, 0.439216, 0.847059, 1)
@@ -53,3 +54,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5861, 0.673981, -113.397)
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.512553, 0.858656, 0, -0.858656, 0.512553, -37.4556, 14.0459, -97.7408)
 current = true
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UILayer" node_paths=PackedStringArray("player") instance=ExtResource("4_wp1eo")]
+player = NodePath("../../Player")

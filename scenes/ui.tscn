@@ -1,0 +1,105 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyioswmlpo12f"]
+
+[ext_resource type="Script" path="res://scenes/ui.gd" id="1_u5lwf"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u5lwf")
+
+[node name="DebugWindow" type="Control" parent="."]
+custom_minimum_size = Vector2(300, 200)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BG" type="ColorRect" parent="DebugWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.545098)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -77.0
+offset_right = 140.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugLabel" type="Label" parent="DebugWindow/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Debug"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DebugWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="DebugWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "FPS: {fps_value}"
+
+[node name="FPSLockContainer" type="HBoxContainer" parent="DebugWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="DebugWindow/VBoxContainer/FPSLockContainer"]
+layout_mode = 2
+text = "Max:"
+
+[node name="FPSMaxHSlider" type="HSlider" parent="DebugWindow/VBoxContainer/FPSLockContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 10.0
+max_value = 1000.0
+step = 10.0
+value = 60.0
+
+[node name="FPSMaxLabel" type="Label" parent="DebugWindow/VBoxContainer/FPSLockContainer"]
+layout_mode = 2
+text = "{fps_value}"
+
+[node name="VSYNCContainer" type="HBoxContainer" parent="DebugWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="VSYNCLabel" type="Label" parent="DebugWindow/VBoxContainer/VSYNCContainer"]
+layout_mode = 2
+text = "VSYNC:"
+
+[node name="VSYNCCheckButton" type="CheckButton" parent="DebugWindow/VBoxContainer/VSYNCContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="DebugWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerVelocityContainer" type="HBoxContainer" parent="DebugWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerVelocityLabel" type="Label" parent="DebugWindow/VBoxContainer/PlayerVelocityContainer"]
+layout_mode = 2
+text = "PlayerVelocity: {player_speed_value}"
+
+[node name="PlayerSpeedContainer" type="HBoxContainer" parent="DebugWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerSpeedLabel" type="Label" parent="DebugWindow/VBoxContainer/PlayerSpeedContainer"]
+layout_mode = 2
+text = "PlayerSpeed: {player_speed_value}"
+
+[connection signal="value_changed" from="DebugWindow/VBoxContainer/FPSLockContainer/FPSMaxHSlider" to="." method="_on_fps_max_h_slider_value_changed"]
+[connection signal="toggled" from="DebugWindow/VBoxContainer/VSYNCContainer/VSYNCCheckButton" to="." method="_on_vsync_check_button_toggled"]
