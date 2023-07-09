@@ -77,10 +77,10 @@ current = true
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="UI" parent="UILayer" node_paths=PackedStringArray("cube", "controller") instance=ExtResource("4_wp1eo")]
-cube = NodePath("../../Cube")
-controller = NodePath("../../Controller")
+[node name="UI" parent="UILayer" node_paths=PackedStringArray("_cube", "_controller") instance=ExtResource("4_wp1eo")]
+_cube = NodePath("../../Cube")
+_controller = NodePath("../../Controller")
 
-[node name="Controller" type="Node" parent="." node_paths=PackedStringArray("cube")]
+[node name="Controller" type="Node" parent="." node_paths=PackedStringArray("_cube")]
 script = ExtResource("6_d6j0a")
-cube = NodePath("../Cube")
+_cube = NodePath("../Cube")
